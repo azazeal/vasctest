@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  secure:
+    build:
+      context: .
+    ports:
+      - 10000:10000
+
+  insecure:
+    build:
+      context: .
+    environment:
+      INSECURE: 1
+    ports:
+      - 10001:10000
