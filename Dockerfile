@@ -1,4 +1,4 @@
-FROM varnish:7.0.0-alpine
+FROM varnish:7.0-alpine
 
 COPY default.vcl /etc/varnish/
 COPY secret /etc/varnish/
