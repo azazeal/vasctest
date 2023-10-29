@@ -2,12 +2,14 @@ version: '3.7'
 
 services:
   secure:
+    image: azazeal/vasctest:dev
     build:
       context: .
     ports:
       - 10000:10000
 
   insecure:
+    image: azazeal/vasctest:dev
     build:
       context: .
     environment:

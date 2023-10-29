@@ -1,7 +1,8 @@
 FROM varnish:7.0-alpine
 
-COPY default.vcl /etc/varnish/
-COPY secret /etc/varnish/
+COPY docker/default.vcl /etc/varnish/
+COPY docker/secret /etc/varnish/
+COPY docker/docker-varnish-entrypoint /usr/local/bin/
 
-COPY scripts/ /usr/local/bin/
-ENTRYPOINT [ "/usr/local/bin/docker-varnish-entrypoint" ]
+ENTRYPOINT [ "docker-varnish-entrypoint" ]
+CMD []
