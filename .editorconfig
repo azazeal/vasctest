@@ -8,3 +8,7 @@ indent_style = space
 insert_final_newline = true
 tab_width = unset
 trim_trailing_whitespace = true
+
+[docker/docker-varnish-entrypoint]
+indent_style = tab
+tab_width = unset
