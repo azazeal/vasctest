@@ -3,25 +3,23 @@ set -e
 
 PORT=10000
 
-if [ -z "$INSECURE" ]; then
-    exec varnishd \
-        -F \
-        -f /etc/varnish/default.vcl \
-        -a http=:80,HTTP \
-        -a proxy=:8443,PROXY \
-        -p feature=+http2 \
-        -s malloc,${VARNISH_SIZE} \
-        -T :${PORT} \
-        -S /etc/varnish/secret
+if [ -z "${INSECURE}" ]; then
+	exec varnishd \
+		-F \
+		-f /etc/varnish/default.vcl \
+		-a http=:80,HTTP \
+		-a proxy=:8443,PROXY \
+		-p feature=+http2 \
+		-T :${PORT} \
+		-S /etc/varnish/secret
 else
-    exec varnishd \
-        -F \
-        -f /etc/varnish/default.vcl \
-        -a http=:80,HTTP \
-        -a proxy=:8443,PROXY \
-        -p feature=+http2 \
-        -s malloc,${VARNISH_SIZE} \
-        -T :${PORT} \
-        -S none
+	exec varnishd \
+		-F \
+		-f /etc/varnish/default.vcl \
+		-a http=:80,HTTP \
+		-a proxy=:8443,PROXY \
+		-p feature=+http2 \
+		-T :${PORT} \
+		-S none
 fi
 
